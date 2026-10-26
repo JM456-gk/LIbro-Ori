@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26 Cosas Que Amo De Ti - Oriana</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background-color: #1a121d;
+            background-image: 
+                radial-gradient(circle at 50% 30%, rgba(100, 45, 85, 0.35) 0%, rgba(12, 8, 15, 0.98) 100%),
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01) 1px, transparent 1px, transparent 2px);
+            color: #2e2129;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            height: 600px;
+            background: radial-gradient(ellipse at center, rgba(216, 131, 183, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .drop-cap::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            padding-top: 0.1rem;
+            color: #7a1d47;
+            font-weight: 700;
+        }
+
+        .book-viewport {
+            perspective: 2000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .book-container {
+            width: 780px;
+            height: 540px;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+        }
+
+        @media (max-width: 820px) {
+            .book-container {
+                width: 360px;
+                height: 520px;
+            }
+        }
+
+        .spine-shadow {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.05) 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.22) 100%);
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        @media (max-width: 820px) {
+            .spine-shadow { display: none; }
+        }
+
+        .page-sheet {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+        }
+
+        @media (max-width: 820px) {
+            .page-sheet { width: 100%; }
+        }
+
+        .page-sheet.flipped {
+            transform: rotateY(-180deg);
+        }
+
+        .page-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .page-face.back {
+            transform: rotateY(180deg);
+        }
+
+        .paper-texture {
+            background-color: #fbf5f8;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.7) 0%, rgba(235, 210, 225, 0.4) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            border: 1px solid #e3d0dc;
+            box-shadow: inset 0 0 20px rgba(160, 95, 135, 0.08);
+        }
+
+        .cover-texture {
+            background: linear-gradient(135deg, #0f382c 0%, #051a14 100%);
+            box-shadow: 
+                inset 0 0 20px rgba(0, 0, 0, 0.95),
+                inset 0 0 3px rgba(229, 193, 88, 0.5);
+            border: 2px solid #1a4d3e;
+        }
+
+        .gold-border {
+            border: 2px solid #e5c158;
+            outline: 1px dashed rgba(229, 193, 88, 0.6);
+            outline-offset: -6px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center py-6 px-4">
+
+    <div class="ambient-glow"></div>
+
+    <header class="text-center mb-4 z-10">
+        <h1 class="font-['Cinzel'] text-2xl md:text-3xl font-bold tracking-widest text-[#e8a3ca] uppercase drop-shadow">
+            Libro Interactivo
+        </h1>
+        <p class="text-xs md:text-sm text-[#c89eb7] italic mt-1">
+            Usa la tecla <span class="border border-[#7e556e] px-1.5 py-0.5 rounded text-xs">→</span> o haz clic para pasar las hojas, bonita
+        </p>
+    </header>
+
+    <div class="book-viewport my-auto">
+        <div class="book-container" id="book">
+            <div class="spine-shadow"></div>
+
+            <!-- HOJA 0: PORTADA / PREFACIO -->
+            <div class="page-sheet" id="sheet-0" style="z-index: 16;" onclick="flipSheet(0)">
+                <div class="page-face cover-texture rounded-r-lg p-8 flex flex-col justify-between text-center">
+                    <div class="gold-border h-full w-full p-6 flex flex-col justify-between items-center">
+                        <div class="text-[#e5c158] text-xs uppercase tracking-widest mt-2">Edición Especial</div>
+                        <div class="my-auto space-y-4">
+                            <i class="fa-solid fa-book-bookmark text-4xl text-[#e5c158]"></i>
+                            <h2 class="font-['Cinzel'] text-2xl md:text-3xl font-bold text-[#f7e9bc] tracking-wider uppercase leading-tight">
+                                26 COSAS QUE AMO DE ORIANA
+                            </h2>
+                            <div class="w-16 h-0.5 bg-[#e5c158] mx-auto"></div>
+                            <p class="font-['Pinyon_Script'] text-2xl text-[#e5c158]">"La Reina de mi Corazón"</p>
+                        </div>
+                        <div class="text-[#c2ab67] text-sm font-['Cinzel'] mb-2">José Manuel Hernández Mendoza</div>
+                    </div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <span class="text-xs uppercase tracking-widest text-[#a85c84] font-['Cinzel']">- Prefacio -</span>
+                            <div class="text-xs text-[#b8769c] mt-1">❖ ❖ ❖</div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Dedicado a la niña que protagoniza mis más hermosos sueños, aquella con la que he compartido tanto y de la que estoy tan profundamente enamorado. Te dedico este libro con todo mi amor y honestidad.
+                        </p>
+                        <p class="text-lg leading-relaxed text-[#2e2129] mt-4">
+                            A través de estas páginas te expreso 26 razones por las cuales te amo, en honor a nuestro día especial que dio inicio a esta maravillosa historia juntos.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">•</div>
+                </div>
+            </div>
+
+            <!-- HOJA 1: 1 Y 2 -->
+            <div class="page-sheet" id="sheet-1" style="z-index: 15;" onclick="flipSheet(1)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-4">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 1</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <div class="my-4 p-1.5 bg-[#f2e1eb] border border-[#d8b8cc] rounded shadow-inner">
+                            <img src="72287.jpg" alt="Ojitos" class="w-full h-32 object-cover rounded opacity-90 sepia-[0.25]" onerror="this.src='https://placehold.co/600x300/f3e1eb/6a2b4e?text=Oriana+Preciosa'">
+                        </div>
+                        <p class="text-lg leading-relaxed text-[#2e2129]">
+                            Amo tus ojos, amo su marrón tan característico, la forma en la que me hipnotizan y me hacen perderme por completo en ellos, nunca me cansaré de ver esos ojos bellos, ni de sentirme embobado viéndolos.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">1</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 2</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu cabellito enrulado y precioso que siempre cuidas y mantienes, amo verte recogiéndotelo mientras hablas y lo hermoso que es, combina contigo.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">2</div>
+                </div>
+            </div>
+
+            <!-- HOJA 2: 3 Y 4 -->
+            <div class="page-sheet" id="sheet-2" style="z-index: 14;" onclick="flipSheet(2)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 3</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu risa, sonora, estridente y linda, tan divertida y única como lo eres tú, tan encantadora y contagiosa.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">3</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 4</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu vocecita que me encanta y solo de escucharla acelera mi corazón, cada palabra que dices con ella es como la canción más hermosa que podría escuchar, la voz más linda y encantadora.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">4</div>
+                </div>
+            </div>
+
+            <!-- HOJA 3: 5 Y 6 -->
+            <div class="page-sheet" id="sheet-3" style="z-index: 13;" onclick="flipSheet(3)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 5</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tus gestos, amo tus expresiones, cómo frunces el ceño, cómo levantas los ojitos y cómo reaccionas a las cosas, me encanta descubrir cada nuevo detalle característico de ti.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">5</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 6</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tus cachetitos, grandes y bonitos, que me encantaría besar y acariciar con tanto cariño y regresarles la ternura que me generan; no hay cachetitos más hermosos que los de la niña que amo.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">6</div>
+                </div>
+            </div>
+
+            <!-- HOJA 4: 7 Y 8 -->
+            <div class="page-sheet" id="sheet-4" style="z-index: 12;" onclick="flipSheet(4)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 7</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tus labios, bonitos y rellenitos que todos los días sueño con poder besar y verlos mientras me cuentas tus días embobadito.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">7</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 8</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu sonrisa, me llena de alegría y me es imposible no sonreír al verte sonreír a ti, acelera mi corazón tanto como todo tu ser.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">8</div>
+                </div>
+            </div>
+
+            <!-- HOJA 5: 9 Y 10 -->
+            <div class="page-sheet" id="sheet-5" style="z-index: 11;" onclick="flipSheet(5)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 9</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo la energía que tienes, siempre estás hablando y contando cosas y moviendo tus manitos al hablar, adoro eso de ti.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">9</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 10</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu locurita, las cosas que cantas de la nada, tus ideas loquitas y tu forma de ser tan única y especial como lo eres tú.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">10</div>
+                </div>
+            </div>
+
+            <!-- HOJA 6: 11 Y 12 -->
+            <div class="page-sheet" id="sheet-6" style="z-index: 10;" onclick="flipSheet(6)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 11</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo cómo sacas la lengüita en tus fotos y videos, es algo que te caracteriza y lo amo, te ves muy tierna y linda haciendo eso, y me encanta verte haciéndolo.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">11</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 12</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu forma de hablar, única y propia de ti, podría escucharte hablar por horas y horas embobado en tu voz y en tus ojos mientras mueves las manitos al hablar y mi cerebro enamorado solo puede pensar en lo mucho que le encantas.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">12</div>
+                </div>
+            </div>
+
+            <!-- HOJA 7: 13 Y 14 -->
+            <div class="page-sheet" id="sheet-7" style="z-index: 9;" onclick="flipSheet(7)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 13</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo cómo hablas de tus libros, dejas muy evidente cuánto los disfrutas y amas, a cada personaje y cada historia. Guardo con mucho cariño en mi mente todos esos libros que hemos leído juntitos, desde <i>Crueles Instintos</i> y <i>Antes de Diciembre</i> hasta <i>Nerd</i>; es muy especial para mí que compartas tu amor por ellos conmigo.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">13</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 14</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu corazoncito, a pesar de que los demás te juzguen o te hagan sentir mal, tú eres incapaz de odiarlos, y siempre tratas de ser tú, eres una niña muy buena.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">14</div>
+                </div>
+            </div>
+
+            <!-- HOJA 8: 15 Y 16 -->
+            <div class="page-sheet" id="sheet-8" style="z-index: 8;" onclick="flipSheet(8)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 15</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu dedicación, eres muy aplicada con tus estudios y siempre te esfuerzas al máximo, incluso si no sacas la mejor nota, ese esfuerzo es más valioso que cualquier nota alta y te representa como la niña inteligentosa que eres.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">15</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 16</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu paciencia, has sido sumamente paciente conmigo durante todo este tiempo y es algo que amo y agradezco porque no cualquiera es capaz de esperar tanto como tú, mi corazón.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">16</div>
+                </div>
+            </div>
+
+            <!-- HOJA 9: 17 Y 18 -->
+            <div class="page-sheet" id="sheet-9" style="z-index: 7;" onclick="flipSheet(9)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 17</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu obsesión con Hello Kitty, gracias a ella te veo, te siento y te pienso cada vez que veo algo relacionado a Kitty, te daría todas las Kittys del mundo con tal de verte feliz con ellas.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">17</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 18</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo jugar contigo, ya sea Plato, Roblox o lo que sea, siempre disfrutaré del tiempo que pasamos juntos jugando, compartiendo y divirtiéndonos.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">18</div>
+                </div>
+            </div>
+
+            <!-- HOJA 10: 19 Y 20 -->
+            <div class="page-sheet" id="sheet-10" style="z-index: 6;" onclick="flipSheet(10)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 19</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tus palabras, siempre sabes qué decirme cuando me siento mal para animarme y levantarme, siempre has sido tú mi porrista que me levanta en los peores momentos y me motiva a ser una mejor versión de mí.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">19</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 20</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu humor, tan loquito e irreverente como lo eres tú misma, siempre me sacas una sonrisa y me haces reír de cosas que nunca pensé que me harían gracia.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">20</div>
+                </div>
+            </div>
+
+            <!-- HOJA 11: 21 Y 22 -->
+            <div class="page-sheet" id="sheet-11" style="z-index: 5;" onclick="flipSheet(11)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 21</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo ver películas contigo, se siente muy especial compartir algo tan único como lo que me gusta contigo, tanto como amo que tú compartas tus películas conmigo, atesoro cada película que hemos visto y disfrutado juntos.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">21</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 22</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo todo lo que consideras "feo" de ti, amo tus piecitos que aunque sientas rechazo por ellos yo los amo igual que a cada parte de ti que te cause inseguridad.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">22</div>
+                </div>
+            </div>
+
+            <!-- HOJA 12: 23 Y 24 -->
+            <div class="page-sheet" id="sheet-12" style="z-index: 4;" onclick="flipSheet(12)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 23</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo tu personalidad, con cada faceta y cada parte, puedes ser o la niña más loquita del mundo o la más sentimental, adoro ver y conocer cada parte de quién eres, de la niña que amo.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">23</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 24</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo oírte hablar, amo que me hables de ti, de tu día, de qué te hizo gracia, qué te arrechó, qué sí pasó y qué no; amo cada chisme y cada suceso que me cuentas y disfruto completamente de escucharte como mi radio favorita.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">24</div>
+                </div>
+            </div>
+
+            <!-- HOJA 13: 25 Y 26 -->
+            <div class="page-sheet" id="sheet-13" style="z-index: 3;" onclick="flipSheet(13)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 25</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-lg leading-relaxed text-[#2e2129]">
+                            Amo el tenerte cerca, aunque no hemos estado mucho tiempo juntos, el poco tiempo que hemos compartido ha sido maravilloso para mí; el contemplarte con todo mi amor y poder abrazarte, oler tu pelo y pellizcarte es algo que simplemente no puedo describir de lo hermoso que se siente.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">25</div>
+                </div>
+                <div class="page-face back paper-texture rounded-l-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-center mb-6">
+                            <h3 class="font-['Cinzel'] text-lg font-bold text-[#7a1d47]">NÚMERO 26</h3>
+                            <div class="w-12 h-0.5 bg-[#b8769c] opacity-40 mx-auto mt-1"></div>
+                        </div>
+                        <p class="drop-cap text-base leading-relaxed text-[#2e2129]">
+                            Amo todo de ti, amo todo lo que me haces sentir y amo la persona que eres y que me haces ser, amo con cada parte de mi ser a <b>Oriana Valentina Castillo Quiroga</b>, en cada momento, en cada situación y en cada problema. Nunca, nunca he dejado de amar ni un poco a mi majestad preciosa, con quien he aprendido a amar y lo que es el amor.
+                        </p>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">26</div>
+                </div>
+            </div>
+
+            <!-- HOJA 14: DEDICATORIA FINAL Y CONTRAPORTADA -->
+            <div class="page-sheet" id="sheet-14" style="z-index: 2;" onclick="flipSheet(14)">
+                <div class="page-face paper-texture rounded-r-lg p-8 flex flex-col justify-between">
+                    <div class="my-auto text-center space-y-4">
+                        <div class="text-xs text-[#b8769c]">❖ ❖ ❖</div>
+                        <p class="font-['Pinyon_Script'] text-3xl text-[#7a1d47] leading-relaxed">
+                            "Eres la niña de mis sueños, eres mi majestad, mi capricho, mi fuego, mi Jen, mi sukubita, mi sol, mi corazón, mi niña, mi amor, mi vida, y todo lo demás, eres mi todo Oriana..."
+                        </p>
+                        <p class="font-['EB_Garamond'] italic text-base text-[#2e2129] pt-2">
+                            Te amo y te seguiré amando mientras el sol ilumine el cielo y la luna el sosiego.
+                        </p>
+                        <div class="pt-4 border-t border-[#d8b8cc]/50">
+                            <p class="font-['Cinzel'] text-sm text-[#7a1d47] font-bold">Con amor y siempre tuyo:</p>
+                            <p class="font-['Pinyon_Script'] text-2xl text-[#2e2129]">José Manuel</p>
+                        </div>
+                    </div>
+                    <div class="text-center text-xs text-[#a85c84] font-['Cinzel']">Fin</div>
+                </div>
+                <div class="page-face back cover-texture rounded-l-lg p-8 flex flex-col justify-between text-center">
+                    <div class="gold-border h-full w-full p-6 flex flex-col justify-between items-center">
+                        <div class="text-[#e5c158] text-xs uppercase tracking-widest mt-2">Fin de la Lectura</div>
+                        <div class="my-auto space-y-3">
+                            <i class="fa-solid fa-heart text-3xl text-[#e5c158]"></i>
+                            <p class="font-['Cinzel'] text-xs text-[#f7e9bc] tracking-widest uppercase">
+                                GRACIAS POR LEER
+                            </p>
+                        </div>
+                        <div class="text-[#c2ab67] text-[10px] font-['Cinzel'] mb-2">MMXXVI</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="w-full max-w-xl mx-auto mt-6 z-10">
+        <div class="bg-[#2a1725]/90 backdrop-blur border border-[#522b47] rounded-full px-6 py-3 flex items-center justify-between shadow-2xl text-[#e8a3ca]">
+            <button onclick="prevPage()" class="hover:text-white transition flex items-center gap-2 text-sm font-['Cinzel'] focus:outline-none">
+                <i class="fa-solid fa-chevron-left"></i> Anterior
+            </button>
+            <div class="text-xs font-['Cinzel'] text-[#c89eb7]">
+                Hoja <span id="current-page-num" class="text-[#e8a3ca] font-bold">1</span> de <span id="total-pages-num">15</span>
+            </div>
+            <button onclick="nextPage()" class="hover:text-white transition flex items-center gap-2 text-sm font-['Cinzel'] focus:outline-none">
+                Siguiente <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        const totalSheets = 15;
+        let currentSheet = 0;
+
+        function updatePageNumbers() {
+            document.getElementById('current-page-num').innerText = Math.min(currentSheet + 1, totalSheets);
+            document.getElementById('total-pages-num').innerText = totalSheets;
+        }
+
+        function flipSheet(index) {
+            if (index === currentSheet) {
+                nextPage();
+            } else if (index === currentSheet - 1) {
+                prevPage();
+            }
+        }
+
+        function nextPage() {
+            if (currentSheet < totalSheets) {
+                const sheet = document.getElementById(`sheet-${currentSheet}`);
+                if (sheet) {
+                    sheet.classList.add('flipped');
+                    sheet.style.zIndex = currentSheet + 1;
+                    currentSheet++;
+                    updatePageNumbers();
+                }
+            }
+        }
+
+        function prevPage() {
+            if (currentSheet > 0) {
+                currentSheet--;
+                const sheet = document.getElementById(`sheet-${currentSheet}`);
+                if (sheet) {
+                    sheet.classList.remove('flipped');
+                    sheet.style.zIndex = totalSheets - currentSheet + 10;
+                    updatePageNumbers();
+                }
+            }
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') nextPage();
+            else if (event.key === 'ArrowLeft') prevPage();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextPage();
+            else if (touchEndX > touchStartX + 50) prevPage();
+        }, false);
+
+        window.onload = () => { updatePageNumbers(); };
+    </script>
+</body>
+</html>
